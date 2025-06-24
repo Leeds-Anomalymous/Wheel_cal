@@ -13,16 +13,16 @@ plt.rcParams['axes.unicode_minus'] = False
 # 核心参数（精确匹配新要求）
 # =================================================================
 # 轨迹参数
-TRAJ_AMPLITUDE = 300        # 轨迹幅度(mm) - 匹配赛道宽度
+TRAJ_AMPLITUDE = 200        # 轨迹幅度(mm) - 匹配赛道宽度
 OBSTACLE_DISTANCES = [1000, 2000, 3000, 4000, 5000]  # 障碍物位置
 
 # 机械结构参数 (新增)
-STEERING_ARM_LENGTH = 50    # 转向臂长度(mm)
+STEERING_ARM_LENGTH = 35    # 转向臂长度(mm)
 TRANSMISSION_RATIO = 5.2    # 传动比
-CENTER_HOLE_DIAMETER = 4    # 中心孔直径(mm)
+CENTER_HOLE_DIAMETER = 12    # 中心孔直径(mm)
 
 # 凸轮参数（动态计算）
-BASE_CIRCLE_DIAMETER = 100  # 基圆直径100mm (固定)
+BASE_CIRCLE_DIAMETER = 70  # 基圆直径100mm (固定)
 
 # 运动参数
 TRAJ_PERIOD = 2000          # 一个完整周期2000mm
@@ -73,7 +73,7 @@ def vehicle_trajectory(distance):
 # =================================================================
 def generate_cam_profile():
     """生成凸轮实际加工形状的点集"""
-    angles = np.arange(0, 360, 1)  # 0-360°，1°分辨率
+    angles = np.arange(0, 361, 1)  # 0-360°，包含360°，确保闭合
     base_radius = BASE_CIRCLE_DIAMETER / 2
     profile_points = []
     
